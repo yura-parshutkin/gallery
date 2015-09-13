@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Photo
@@ -29,13 +30,19 @@ class Photo
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
+     *
+     * @Assert\NotBlank()
      */
     protected $description;
 
     /**
-     * @Vich\UploadableField(mapping="photo_image", fileNameProperty="imageName")
      *
      * @var File
+     *
+     * @Vich\UploadableField(mapping="photo_image", fileNameProperty="imageName")
+     *
+     * @Assert\NotBlank()
+     * @Assert\Image()
      */
     protected $imageFile;
 
@@ -65,6 +72,8 @@ class Photo
      *
      * @ORM\ManyToOne(targetEntity="Subcategory", inversedBy="photos")
      * @ORM\JoinColumn(name="sub_category_id", nullable=false, onDelete="cascade")
+     *
+     * @Assert\NotBlank()
      */
     protected $subcategory;
 

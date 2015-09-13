@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Subcategory
@@ -34,6 +35,8 @@ class Subcategory
      *
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="subcategories")
      * @ORM\JoinColumn(name="category_id", nullable=false, onDelete="cascade")
+     *
+     * @Assert\NotBlank()
      */
     protected $category;
 
