@@ -1,0 +1,10 @@
+<ul class="list-unstyled">
+    {% for photo in photos %}
+        <li>
+            <div class="text-center">
+                <h3>{{ photo.description }}</h3>
+                <img src="{{ vich_uploader_asset(photo, 'imageFile')| imagine_filter('800x800') }}" alt="{{ photo.description }}">
+            </div>
+        </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,39 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block h1 %}Subcategory list{% endblock %}
+
+{% block content %}
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in subcategories %}
+            <tr>
+                <td><a href="{{ path('admin.subcategory.edit', { 'id': category.id }) }}">{{ category.id }}{{ category }}</a></td>
+                <td>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="{{ path('admin.subcategory.edit', { 'id': category.id }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin.subcategory.delete', { 'id': category.id }) }}">delete</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled">
+        <li>
+            <a href="{{ path('admin.subcategory.new') }}" class="btn btn-default">
+                Create new
+            </a>
+        </li>
+    </ul>
+{% endblock %}

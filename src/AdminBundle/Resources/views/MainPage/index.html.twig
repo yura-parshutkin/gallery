@@ -1,0 +1,27 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block h1 %}Main page{% endblock %}
+
+{% block content %}
+
+    <ul class="list-inline text-center">
+        <li>
+            <a href="{{ path('admin.photo.new') }}" class="btn btn-default">
+                Create new photo
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('admin.category.new') }}" class="btn btn-default">
+                Create new category
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('admin.subcategory.new') }}" class="btn btn-default">
+                Create new subcategory
+            </a>
+        </li>
+    </ul>
+
+{% endblock %}
+
+

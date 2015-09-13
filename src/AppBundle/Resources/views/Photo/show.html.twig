@@ -1,0 +1,10 @@
+{% extends '@App/base.html.twig' %}
+
+{% block h1 %}
+    Show {{ subcategory }}
+{% endblock %}
+
+{% block content %}
+    {{ include('@App/Partial/_photo_list.html.twig', { photos: subcategory.getPhotos }) }}
+{% endblock %}
+

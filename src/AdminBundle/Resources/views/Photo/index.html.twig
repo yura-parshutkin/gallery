@@ -1,0 +1,43 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block h1 %}Photo list{% endblock %}
+
+{% block content %}
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for photo in photos %}
+            <tr>
+                <td><a href="{{ path('admin.photo.edit', { 'id': photo.id }) }}">{{ photo }}</a></td>
+                <td>{{ photo.createdAt | date('Y-m-d H:i:s') }}</td>
+                <td>{{ photo.updatedAt | date('Y-m-d H:i:s') }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="{{ path('admin.photo.edit', { 'id': photo.id }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin.photo.delete', { 'id': photo.id }) }}">delete</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled">
+        <li>
+            <a href="{{ path('admin.photo.new') }}" class="btn btn-default">
+                Create new
+            </a>
+        </li>
+    </ul>
+{% endblock %}
