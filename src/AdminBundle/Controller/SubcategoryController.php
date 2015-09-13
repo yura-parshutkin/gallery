@@ -44,9 +44,7 @@ class SubcategoryController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($subcategory);
-            $em->flush();
+            $this->get('app.repository.subcategory')->save($subcategory);
 
             return $this->redirect($this->generateUrl('admin.subcategory.index'));
         }
@@ -102,13 +100,11 @@ class SubcategoryController extends Controller
      */
     public function updateAction(Request $request, Subcategory $subcategory)
     {
-        $em = $this->getDoctrine()->getManager();
-
         $form = $this->createEditForm($subcategory);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em->flush();
+            $this->get('app.repository.subcategory')->save($subcategory);
 
             return $this->redirect($this->generateUrl('admin.subcategory.index'));
         }
@@ -126,9 +122,7 @@ class SubcategoryController extends Controller
      */
     public function deleteAction(Subcategory $subcategory)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($subcategory);
-        $em->flush();
+        $this->get('app.repository.subcategory')->remove($subcategory);
 
         return $this->redirect($this->generateUrl('admin.subcategory.index'));
     }

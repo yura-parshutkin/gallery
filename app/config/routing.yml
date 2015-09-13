@@ -9,3 +9,6 @@ app:
 
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+auth:
+    resource: routing_auth.yml

@@ -44,10 +44,7 @@ class PhotoController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($photo);
-            $em->flush();
-
+            $this->get('app.repository.photo')->save($photo);
             return $this->redirect($this->generateUrl('admin.photo.index'));
         }
 
@@ -103,13 +100,11 @@ class PhotoController extends Controller
      */
     public function updateAction(Request $request, Photo $photo)
     {
-        $em = $this->getDoctrine()->getManager();
-
         $form = $this->createEditForm($photo);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em->flush();
+            $this->get('app.repository.photo')->save($photo);
 
             return $this->redirect($this->generateUrl('admin.photo.index'));
         }
@@ -127,9 +122,7 @@ class PhotoController extends Controller
      */
     public function deleteAction(Photo $photo)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($photo);
-        $em->flush();
+        $this->get('app.repository.photo')->remove($photo);
 
         return $this->redirect($this->generateUrl('admin.photo.index'));
     }

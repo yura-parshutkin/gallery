@@ -44,10 +44,7 @@ class CategoryController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($category);
-            $em->flush();
-
+            $this->get('app.repository.category')->save($category);
             return $this->redirect($this->generateUrl('admin.category.index'));
         }
 
@@ -101,14 +98,11 @@ class CategoryController extends Controller
      */
     public function updateAction(Request $request, Category $category)
     {
-        $em = $this->getDoctrine()->getManager();
-
         $form = $this->createEditForm($category);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em->flush();
-
+            $this->get('app.repository.category')->save($category);
             return $this->redirect($this->generateUrl('admin.category.index'));
         }
 
@@ -125,9 +119,7 @@ class CategoryController extends Controller
      */
     public function deleteAction(Category $category)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($category);
-        $em->flush();
+        $this->get('app.repository.category')->remove($category);
 
         return $this->redirect($this->generateUrl('admin.category.index'));
     }

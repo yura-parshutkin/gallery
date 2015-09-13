@@ -3,7 +3,7 @@
         <li>
             <div class="text-center">
                 <h3>{{ photo.description }}</h3>
-                <img src="{{ vich_uploader_asset(photo, 'imageFile')| imagine_filter('800x800') }}" alt="{{ photo.description }}">
+                <a href="{{ vich_uploader_asset(photo, 'imageFile') }}"><img src="{{ vich_uploader_asset(photo, 'imageFile') | imagine_filter('800x800') }}" alt="{{ photo.description }}"></a>
             </div>
         </li>
     {% endfor %}
