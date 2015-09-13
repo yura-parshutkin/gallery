@@ -13,7 +13,7 @@
         <tbody>
         {% for category in categories %}
             <tr>
-                <td><a href="{{ path('admin.category.edit', { 'id': category.id }) }}">{{ category.id }}{{ category }}</a></td>
+                <td><a href="{{ path('admin.category.edit', { 'id': category.id }) }}">{{ category }}</a></td>
                 <td>
                     <ul class="list-unstyled">
                         <li>
